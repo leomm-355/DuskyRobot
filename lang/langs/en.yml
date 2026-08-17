@@ -1,7 +1,7 @@
 name : English
 
 #menu - menu.py
-menu : "Dusky Robot was created on **August 10, 2022**. We are currently developing and maintaining the **Kutty Angel**  and **Dusky Music** plugin, using only the **Pyrogram** libarry.\n\n• **creator** : [Dusky Joe](https://t.me/OFFICIAL_DUSKY)\n• **Language** : [python 3](https://www.python.org/)\n• **Database** : [Mongo db](https://cloud.mongodb.com/)\n• **Server** : [Heroku](https://heroku.com/)\n• **Build Version** : `1.0.9`\n\n@DuskysSupport"
+menu : "999Core was created on **August 10, 2022**. We are currently developing and maintaining the **Kutty Angel**  and **999 Music** plugin, using only the **Pyrogram** libarry.\n\n• **creator** : [999Core](https://t.me/cores_999)\n• **Language** : [python 3](https://www.python.org/)\n• **Database** : [Mongo db](https://cloud.mongodb.com/)\n• **Server** : [Heroku](https://heroku.com/)\n• **Build Version** : `1.0.9`\n\n@hex_king9"
 back : "« Back"
 
 #main - main.py
