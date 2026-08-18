@@ -6,23 +6,21 @@ from motor.motor_asyncio import AsyncIOMotorClient
 from pyrogram import Client
 from pyrogram.types import Message
 from Python_ARQ import ARQ
-import asyncio
-from pyrogram import Client
 from config.config import *
 import pymongo
 
-SUPPORT_GROUP = "https://t.me/DuskysSupport" #If you Don't Know Codes Any error Fixing method please Don't change this.... ):
+SUPPORT_GROUP = "https://t.me/cores_999" 
 SUDOERS = SUDO_USERS_ID
 LOG_GROUP_ID = LOG_GROUP_ID
 MOD_LOAD = []
 MOD_NOLOAD = []
 bot_start_time = time.time()
-DB_URI = BASE_DB #all of gm DATA
+DB_URI = BASE_DB 
 MONGO_URL = MONGO_URL
-OWNER_ID = "5696423555"
+OWNER_ID = "8315544720"
 
 myclient = pymongo.MongoClient(DB_URI)
-dbn = myclient["Dusky"]
+dbn = myclient["cores"]
 
 mongo_client = AsyncIOMotorClient(MONGO_URL)
 db = mongo_client.Dusky
@@ -42,14 +40,28 @@ async def load_sudoers():
             )
     SUDOERS = (SUDOERS + sudoers) if sudoers else SUDOERS
 
-loop = asyncio.get_event_loop()
-loop.run_until_complete(load_sudoers())
-aiohttpsession = ClientSession()
-arq = ARQ(ARQ_API_URL, ARQ_API_KEY, aiohttpsession)
+# Global အဖြစ် ကြေညာရုံသာ ကြေညာမည် (အလုပ်မစသေးပါ)
+aiohttpsession = None
+arq = None
+
 bot = Client("Dusky", bot_token=BOT_TOKEN, api_id=API_ID, api_hash=API_HASH)
-bot.start()
 app = Client("app2", bot_token=BOT_TOKEN, api_id=API_ID1, api_hash=API_HASH1)
-app.start()
+
+async def main():
+    global aiohttpsession, arq
+    # Event loop စတင်မှ aiohttp နဲ့ arq ကို Initialize လုပ်ပါမည်
+    aiohttpsession = ClientSession()
+    arq = ARQ(ARQ_API_URL, ARQ_API_KEY, aiohttpsession)
+    
+    await load_sudoers()
+    
+    bot.start()
+    app.start()
+
+# Modern asyncio run method ကို အသုံးပြုခြင်း
+loop = asyncio.get_event_loop()
+loop.run_until_complete(main())
+
 x = app.get_me()
 
 BOT_ID = int(BOT_TOKEN.split(":")[0])
