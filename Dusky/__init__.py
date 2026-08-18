@@ -49,9 +49,17 @@ app = Client("app2", bot_token=BOT_TOKEN, api_id=API_ID1, api_hash=API_HASH1)
 
 async def main():
     global aiohttpsession, arq
-    # Event loop စတင်မှ aiohttp နဲ့ arq ကို Initialize လုပ်ပါမည်
+    # Event loop စတင်မှ aiohttp ကို Initialize လုပ်ပါမည်
     aiohttpsession = ClientSession()
-    arq = ARQ(ARQ_API_URL, ARQ_API_KEY, aiohttpsession)
+    
+    # ARQ API URL နဲ့ Key ရှိမှသာ ချိတ်ဆက်မည် (မရှိလျှင် None ထားမည်)
+    if ARQ_API_URL and ARQ_API_KEY:
+        try:
+            arq = ARQ(ARQ_API_URL, ARQ_API_KEY, aiohttpsession)
+        except Exception:
+            arq = None
+    else:
+        arq = None
     
     await load_sudoers()
     
