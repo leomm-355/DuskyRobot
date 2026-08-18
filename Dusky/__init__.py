@@ -63,8 +63,9 @@ async def main():
     
     await load_sudoers()
     
-    bot.start()
-    app.start()
+    # ပြင်ဆင်ထားသည့် await ထည့်သွင်းထားသောနေရာ
+    await bot.start()
+    await app.start()
 
 # Modern asyncio run method ကို အသုံးပြုခြင်း
 loop = asyncio.get_event_loop()
